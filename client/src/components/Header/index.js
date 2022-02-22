@@ -14,101 +14,80 @@ const Header = () => {
 
   return (
     <>
-      <div textAlign="center" style={{ marginTop: '10px' }} alignItems="center" style={{ margin: '0 auto' }} >
-        <Grid.Row className="">
-          {/* <Grid.Column width={2} >
-            <div className="container flex-row justify-space-between-lg justify-center align-center">
-              <div>
-                <Link className="text-light" to="/">
-                  <h3 className="m-0" style={{ color: 'blue', fontSize: '30px' }}>Fixyourway</h3>
+      <Grid textAlign='center' style={{ marginTop: '20px', marginBottom: '30px' }}>
+
+        <Menu.Menu position='left'>
+          <h1>fix your way</h1>
+
+        </Menu.Menu>
+
+        <Menu secondary width={8}>
+          <Menu.Item
+            name='editorials'
+          >
+            Editorials
+          </Menu.Item>
+          <Menu.Item
+            name='reviews'
+          >
+            Reviews
+          </Menu.Item>
+          <Menu.Item
+            name='upcomingEvents'
+          >
+            Upcoming Events
+          </Menu.Item>
+
+        </Menu>
+        <Menu.Menu position='right'>
+          <div>
+            {Auth.loggedIn() ? (
+              <>
+                <Link className="btn btn-lg btn-info m-2" to="/me">
+                  {Auth.getProfile().data.username}'s profile
                 </Link>
-              </div>
-            </div>
-          </Grid.Column> */}
-          <div class="ui secondary  menu">
-            <a class="item">
-              Home
-            </a>
-            <a class="item active">
-              Messages
-            </a>
-            <a class="item">
-              Friends
-            </a>
-            
-            <div>
-              {Auth.loggedIn() ? (
-                <>
-                  <Link className="btn btn-lg btn-info m-2" to="/me">
-                    {Auth.getProfile().data.username}'s profile
-                  </Link>
-                  <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link className="btn btn-lg btn-info m-2" to="/login">
-                    Login
-                  </Link>
-                  <Link className="btn btn-lg btn-light m-2" to="/signup">
-                    Signup
-                  </Link>
-                </>
-              )}
-            </div>
-
-
+                <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link className="btn btn-lg btn-info m-2" to="/login">
+                  Login
+                </Link>
+                <Link className="btn btn-lg btn-light m-2" to="/signup">
+                  Signup
+                </Link>
+              </>
+            )}
           </div>
-          {/* <Grid.Column width={6} >
-          <Menu secondary>
-            <Menu.Item
-              name='home'
-              active='activeItem'
-
-              
-            />
-            <Menu.Item
-              name='messages'
-              
-            />
-            <Menu.Item
-              name='friends'
-              
-            />
-          </Menu>
-        </Grid.Column> */}
-          <Grid.Column width={3} >
-            {/* <div>
-              {Auth.loggedIn() ? (
-                <>
-                  <Link className="btn btn-lg btn-info m-2" to="/me">
-                    {Auth.getProfile().data.username}'s profile
-                  </Link>
-                  <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link className="btn btn-lg btn-info m-2" to="/login">
-                    Login
-                  </Link>
-                  <Link className="btn btn-lg btn-light m-2" to="/signup">
-                    Signup
-                  </Link>
-                </>
-              )}
-            </div> */}
-          </Grid.Column>
-        </Grid.Row>
-      </div>
-
-
-
+        </Menu.Menu>
+      </Grid>
     </>
 
   );
 };
 
 export default Header;
+
+{/* <div>
+  {Auth.loggedIn() ? (
+    <>
+      <Link className="btn btn-lg btn-info m-2" to="/me">
+        {Auth.getProfile().data.username}'s profile
+      </Link>
+      <button className="btn btn-lg btn-light m-2" onClick={logout}>
+        Logout
+      </button>
+    </>
+  ) : (
+    <>
+      <Link className="btn btn-lg btn-info m-2" to="/login">
+        Login
+      </Link>
+      <Link className="btn btn-lg btn-light m-2" to="/signup">
+        Signup
+      </Link>
+    </>
+  )}
+</div> */}

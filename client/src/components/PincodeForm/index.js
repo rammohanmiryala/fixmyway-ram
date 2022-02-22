@@ -14,6 +14,7 @@ const PincodeForm = () => {
     return (
         <form>
             <>
+            <h1 className ="searchbar">Report, view, or discuss local problems</h1>
                 <div className="searchbar">
                     <Search
                         type="text"
