@@ -1,23 +1,12 @@
-import React from 'react';
-import React, { useState } from "react";
 
-import { Icon, Step, Grid} from 'semantic-ui-react'
-import { GraphQLID } from 'graphql';
-import PostcodeDetails from '../components/PostcodeDetails'
+import React  from "react";
+
+import { Icon, Step, Grid } from 'semantic-ui-react';
+
 import Resentprojects from '../components/Resentprojects';
 import PincodeForm from '../components/PincodeForm';
 
 const Home = () => {
-
-  const [state, setState] = useState({
-    results: []
-  });
-const onSearch =()=>{
-setState(prevState => {
-  return { ...prevState, results: results }
-})
-};
-
   return (
     <main >
       <> <div className=" Container flex-row justify-center">
@@ -25,7 +14,7 @@ setState(prevState => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{
             border: '0px dotted #1a1a1a'
-          }}><PincodeForm onSearch ={onSearch}/>
+          }}><PincodeForm />
         </div>
       </div>
         <Grid divided='vertically' textAlign="center" >
@@ -54,11 +43,11 @@ setState(prevState => {
                 </Step>
               </Step.Group>
             </Grid.Column>
-            <Grid.Column width={4} textAlign="center" style={{ borderRight: '1px dotted #1a1a1a' }}     >
-              <PostcodeDetails  results ={state.results}/>
+            <Grid.Column width={4} textAlign="center" style={{ borderRight: '1px dotted #1a1a1a' }}  >
+            <h1>rammohan</h1>
             </Grid.Column>
             <Grid.Column width={4} textAlign="center">
-              <Resentprojects />
+              <h1>rammohan</h1>
             </Grid.Column>
           </Grid.Row>
         </Grid>

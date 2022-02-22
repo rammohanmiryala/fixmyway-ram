@@ -29,6 +29,7 @@ ul li {
     height:60px;
     font-size:35px;
     margin-top: 10px;
+    
 
     
 }
@@ -37,12 +38,7 @@ ul li {
 }
 
 .buttoncolor{
-    padding: 10px;
-    border: 1px ;
-    background-color:rgb(218, 253, 255);
-    color:black;
-    border-radius: 5px;
-    cursor:pointer;
+    
 
 }
 
