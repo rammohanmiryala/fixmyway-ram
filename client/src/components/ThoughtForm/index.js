@@ -78,20 +78,9 @@ const ThoughtForm = () => {
       <h3>Please post the your problem on street?</h3>
       {Auth.loggedIn() ? (
         <>
-          {/* <p
-            className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
-              }`}
-          >
-            Character Count: {characterCount}/280
-          </p> */}
-
-          {/* // className="flex-row justify-center justify-space-between-md align-center"
-            // onSubmit={handleFormSubmit} */}
-
-
           <form className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit} >
-            <label for="exampleInputEmail1"
+            <label 
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Project Title</label>
             <input
               name='thoughtTitle'
@@ -102,7 +91,7 @@ const ThoughtForm = () => {
               placeholder='Manholders are leaking'
               onChange={e => setThoughtTitle(e.target.value)}
             />
-            <label for="exampleInputEmail1"
+            <label 
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>postcode</label>
             <input
               name="postcode"
@@ -114,7 +103,7 @@ const ThoughtForm = () => {
               placeholder='Manholders are leaking'
               onChange={event => setPostcode(event.target.value)}
             />
-            <label for="exampleInputEmail1"
+            <label 
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>State</label>
             <input
               name="state"
@@ -125,7 +114,7 @@ const ThoughtForm = () => {
               placeholder='Telanagana'
               onChange={event => setState(event.target.value)}
             />
-            <label for="exampleInputEmail1"
+            <label 
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Maplink</label>
             <input
               name="maplink"
@@ -137,7 +126,7 @@ const ThoughtForm = () => {
               onChange={event => setMaplink(event.target.value)}
               
             />
-             <label for="exampleInputEmail1"
+             <label 
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Project Description</label>
          
             <textarea
@@ -172,5 +161,7 @@ const ThoughtForm = () => {
     </div>
   );
 };
+
+
 
 export default ThoughtForm;

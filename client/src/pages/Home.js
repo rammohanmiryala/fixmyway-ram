@@ -5,11 +5,17 @@ import { Icon, Step, Grid, Card } from 'semantic-ui-react';
 
 import Resentprojects from '../components/Resentprojects';
 import PincodeForm from '../components/PincodeForm';
-import ThoughtList from '../components/ThoughtList';
+import ThoughtLists from '../components/ThoughtLists';
+import { useQuery } from '@apollo/client';
+
+import { QUERY_THOUGHTS } from '../utils/queries';
+
 
 
 
 const Home = () => {
+  const { loading, data } = useQuery(QUERY_THOUGHTS);
+  const thoughts = data?.thoughts || [];
   return (
     <main >
       <>
@@ -87,10 +93,11 @@ const Home = () => {
                   ].join('')}
                 />
                 <div className="col-12 col-md-10 mb-5">
-                  {/* <ThoughtList
-                    thoughts={thoughts}
-                    title="Some Feed for Thought(s)..."
-                  /> */}
+                  <ThoughtLists
+                     thoughts={thoughts}
+                     showTitle={false}
+                     showUsername={false}
+                  />
                 </div>
               </Card.Group>
 
