@@ -10,7 +10,7 @@ import Auth from '../../utils/auth';
 
 const ThoughtForm = () => {
 
-  const [formState, setFormState] = React.useState({
+  const [formState, setFormState] = useState({
     thoughtText: "",
     postcode: "",
     maplink: "",
