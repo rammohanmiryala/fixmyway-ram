@@ -144,7 +144,7 @@ console.log(formState);
             ></textarea>
             <div className="">
               <button className="" type="submit">
-                Add Thought
+                Add Project
               </button>
             </div>
             {error && (

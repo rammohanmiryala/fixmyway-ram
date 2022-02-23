@@ -43,19 +43,11 @@ Back end:
 ````
 cd server && npm watch
 ````
-    
-## Usage 
-*Run this code to run the application*
-- node server.js
 
 ## Demo
-![E-Commerce Back End](./Assets/img.gif)
+![E-Commerce Back End](./client/public/images/img.gif)
 
 ## License 
 
 - Licensed under the MIT License. 
 
-
-## Repositorie 
----
-- github: https://github.com/rammohanmiryala/E-Commerce_Back_End.git
