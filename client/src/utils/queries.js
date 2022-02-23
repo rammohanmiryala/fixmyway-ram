@@ -10,6 +10,13 @@ export const QUERY_USER = gql`
         _id
         thoughtText
         createdAt
+        thoughtTitle
+        postcode
+        thoughtText
+        maplink
+        state
+        thoughtAuthor
+        createdAt
       }
     }
   }
