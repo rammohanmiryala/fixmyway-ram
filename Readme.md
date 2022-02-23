@@ -59,6 +59,3 @@ cd server && npm watch
 ## Repositorie 
 ---
 - github: https://github.com/rammohanmiryala/E-Commerce_Back_End.git
-
-- video demo : https://youtu.be/T8A3lRh78tA 
-  
