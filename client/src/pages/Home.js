@@ -64,41 +64,13 @@ const Home = () => {
               </Grid.Column> */}
             <Grid.Column width={4} textAlign="center">
               <h4 className="searchbar">Resent projects </h4>
+              
               <Card.Group>
-                <Card
-                  link
-                  header='Rick Sanchez'
-                  meta='Scientist'
-                  description={[
-                    'Rick is a genius scientist whose alcoholism and reckless,',
-                    ' nihilistic behavior are a source of concern for his family.',
-                  ].join('')}
-                />
-                <Card
-                  link
-                  header='Rick Sanchez'
-                  meta='Scientist'
-                  description={[
-                    'Rick is a genius scientist whose alcoholism and reckless,',
-                    ' nihilistic behavior are a source of concern for his family.',
-                  ].join('')}
-                />
-                <Card
-                  link
-                  header='Rick Sanchez'
-                  meta='Scientist'
-                  description={[
-                    'Rick is a genius scientist whose alcoholism and reckless,',
-                    ' nihilistic behavior are a source of concern for his family.',
-                  ].join('')}
-                />
-                <div className="col-12 col-md-10 mb-5">
                   <ThoughtLists
                      thoughts={thoughts}
                      showTitle={false}
                      showUsername={false}
                   />
-                </div>
               </Card.Group>
 
             </Grid.Column>
