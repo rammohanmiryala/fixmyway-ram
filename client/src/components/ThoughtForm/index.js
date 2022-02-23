@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+
 // import { Search, Grid, Header, Segment, Button, Input, TextArea } from 'semantic-ui-react'
 
 import { ADD_THOUGHT } from '../../utils/mutations';
@@ -62,16 +63,15 @@ const ThoughtForm = () => {
     }
   };
 
-  const handleChange = (e) => {
-    const {name,value} = e.target;
-    setFormState(formState => (
-      {
-        ...formState,
-        [name]: value
-      }
-    )); 
-console.log(formState);
-  }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+    console.log(value)
+  };
   // const handleChange = (event) => {
   //   const { name, value } = event.target;
 
@@ -87,10 +87,12 @@ console.log(formState);
         <>
           <form className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit} >
+
             <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Project Title</label>
             <input
               name='thoughtTitle'
+              type="text"
               className='form-control'
               value={formState.thoughtTitle}
               id='form-input-control-first-name'
@@ -105,6 +107,7 @@ console.log(formState);
               id='form-input-control-first-name'
               className='form-control'
               label='First name'
+              type="text"
               value={formState.postcode}
               placeholder='First name'
               placeholder='Manholders are leaking'
@@ -116,6 +119,7 @@ console.log(formState);
               name="state"
               id='form-input-control-first-name'
               className='form-control'
+              type="text"
               value={formState.state}
               label='state'
               placeholder='Telanagana'
@@ -127,6 +131,7 @@ console.log(formState);
               name="maplink"
               id='form-textarea-control-opinion'
               className='form-control'
+              type="text"
               value={formState.maplink}
               label='Project description'
               placeholder='Place map url'
@@ -138,13 +143,14 @@ console.log(formState);
               name="thoughtText"
               placeholder="Here's a new thought..."
               value={formState.thoughtText}
+              type="text"
               className="form-input w-100"
               style={{ lineHeight: '1.5', resize: 'vertical' }}
               onChange={handleChange}
             ></textarea>
             <div className="">
               <button className="" type="submit">
-                Add Thought
+                Add Project
               </button>
             </div>
             {error && (
