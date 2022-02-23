@@ -48,11 +48,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addThought: async (parent, { thoughtTitle,postcode,thoughtText,maplink,state}, context) => {
       if (context.user) {
         const thought = await Thought.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
+          thoughtTitle,postcode,thoughtText,maplink,state, thoughtAuthor:context.user.username,
         });
 
         await User.findOneAndUpdate(

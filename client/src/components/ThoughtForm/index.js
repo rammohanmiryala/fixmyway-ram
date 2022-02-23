@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { Search, Grid, Header, Segment, Button, Form, Input,TextArea } from 'semantic-ui-react'
+import { Search, Grid, Header, Segment, Button, Input, TextArea } from 'semantic-ui-react'
 
 import { ADD_THOUGHT } from '../../utils/mutations';
 import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
@@ -10,6 +10,10 @@ import Auth from '../../utils/auth';
 
 const ThoughtForm = () => {
   const [thoughtText, setThoughtText] = useState('');
+  const [postcode, setPostcode] = useState('');
+  const [maplink, setMaplink] = useState('');
+  const [state, setState] = useState('');
+  const [thoughtTitle, setThoughtTitle] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -42,11 +46,19 @@ const ThoughtForm = () => {
       const { data } = await addThought({
         variables: {
           thoughtText,
+          postcode,
+          thoughtTitle,
+          maplink,
+          state,
           thoughtAuthor: Auth.getProfile().data.username,
         },
       });
 
       setThoughtText('');
+      setPostcode('');
+      setMaplink('');
+      setState('');
+      setThoughtTitle('');
     } catch (err) {
       console.error(err);
     }
@@ -77,62 +89,78 @@ const ThoughtForm = () => {
             // onSubmit={handleFormSubmit} */}
 
 
-          <Form onSubmit={handleFormSubmit}>
-            
-             
+          <form className="flex-row justify-center justify-space-between-md align-center"
+            onSubmit={handleFormSubmit} >
+            <label for="exampleInputEmail1"
+              style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Project Title</label>
+            <input
+              name='thoughtTitle'
+              className='form-control'
+              value={thoughtTitle}
+              id='form-input-control-first-name'
+              label='Project Title'
+              placeholder='Manholders are leaking'
+              onChange={e => setThoughtTitle(e.target.value)}
+            />
+            <label for="exampleInputEmail1"
+              style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>postcode</label>
+            <input
+              name="postcode"
+              id='form-input-control-first-name'
+              className='form-control'
+              label='First name'
+              value={postcode}
+              placeholder='First name'
+              placeholder='Manholders are leaking'
+              onChange={event => setPostcode(event.target.value)}
+            />
+            <label for="exampleInputEmail1"
+              style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>State</label>
+            <input
+              name="state"
+              id='form-input-control-first-name'
+              className='form-control'
+              value={state}
+              label='state'
+              placeholder='Telanagana'
+              onChange={event => setState(event.target.value)}
+            />
+            <label for="exampleInputEmail1"
+              style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Maplink</label>
+            <input
+              name="maplink"
+              id='form-textarea-control-opinion'
+              className='form-control'
+              value={maplink}
+              label='Project description'
+              placeholder='Place map url'
+              onChange={event => setMaplink(event.target.value)}
+              
+            />
+             <label for="exampleInputEmail1"
+              style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Project Description</label>
+         
+            <textarea
+              name="thoughtText"
+              placeholder="Here's a new thought..."
+              value={thoughtText}
+              className="form-input w-100"
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></textarea>
 
-                <Form.Field
-                  id='form-input-control-first-name'
-                  control={Input}
-                  label='First name'
-                  placeholder='First name'
-                />
-                <Form.Field
-                  id='form-input-control-first-name'
-                  control={Input}
-                  label='First name'
-                  placeholder='First name'
-                />
-                 <Form.Field
-                  id='form-input-control-first-name'
-                  control={Input}
-                  label='First name'
-                  placeholder='First name'
-                />
-                <Form.Field
-                  id='form-textarea-control-opinion'
-                  control={TextArea}
-                  label='Project description'
-                  placeholder='Opinion'
-                />
-                <Form.Field
-                  id='form-textarea-control-opinion'
-                  control={TextArea}
-                  label='Project description'
-                  placeholder='Opinion'
-                />
 
-                {/* <textarea
-                  name="thoughtText"
-                  placeholder="Here's a new thought..."
-                  value={thoughtText}
-                  className="form-input w-100"
-                  style={{ lineHeight: '1.5', resize: 'vertical' }}
-                  onChange={handleChange}
-                ></textarea> */}
-          
-           
             <div className="">
-              <Button className="" type="submit">
+              <button className="" type="submit">
                 Add Thought
-              </Button>
+              </button>
             </div>
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}
               </div>
             )}
-          </Form>
+          </form>
 
         </>
       ) : (

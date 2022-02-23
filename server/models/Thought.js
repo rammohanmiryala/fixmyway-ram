@@ -2,12 +2,29 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const thoughtSchema = new Schema({
+  thoughtTitle: {
+    type: String,
+    required: 'You need to give title!',
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
+  },
+  postcode:{
+    type: Number,
+    required: 'You need give postcode!',
+  },
   thoughtText: {
     type: String,
     required: 'You need to leave a thought!',
     minlength: 1,
     maxlength: 280,
     trim: true,
+  },
+  maplink:{
+    type: String
+  },
+  state:{
+    type: String
   },
   thoughtAuthor: {
     type: String,
