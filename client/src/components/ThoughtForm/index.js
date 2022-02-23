@@ -62,14 +62,15 @@ const ThoughtForm = () => {
     }
   };
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setFormState({
-      ...formState,
-      [event.target.name]: value
-    });
-
-
+  const handleChange = (e) => {
+    const {name,value} = e.target;
+    setFormState(formState => (
+      {
+        ...formState,
+        [name]: value
+      }
+    )); 
+console.log(formState);
   }
   // const handleChange = (event) => {
   //   const { name, value } = event.target;
@@ -95,7 +96,7 @@ const ThoughtForm = () => {
               id='form-input-control-first-name'
               label='Project Title'
               placeholder='Manholders are leaking'
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
             />
             <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>postcode</label>
