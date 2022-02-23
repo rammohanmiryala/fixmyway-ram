@@ -13,7 +13,6 @@ h1 {
     color: rgb(1, 1, 59);
 }
 
-
 ul li {
     font-size: 20px;
 } 
@@ -23,7 +22,6 @@ ul li {
     justify-content: center;
     margin-bottom: 20px;
     color:white;
-
 }
 #searchbar{
     width: 700px;
@@ -32,13 +30,10 @@ ul li {
     margin-top: 10px;
     color:white;
     border-radius: 20px;
-
 }
 .postcodes{
     margin: 30px;
     width: 500px;
-
-
 }
 
 .buttoncolor{
