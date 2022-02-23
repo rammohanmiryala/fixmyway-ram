@@ -9,12 +9,15 @@ import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const ThoughtForm = () => {
-  const [thoughtText, setThoughtText] = useState('');
-  const [postcode, setPostcode] = useState('');
-  const [maplink, setMaplink] = useState('');
-  const [state, setState] = useState('');
-  const [thoughtTitle, setThoughtTitle] = useState('');
 
+  const [formState, setFormState] = React.useState({
+    thoughtText: "",
+    postcode: "",
+    maplink: "",
+    state: "",
+    thoughtTitle: "",
+    thoughtAuthor: Auth.getProfile().data.username
+  })
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
@@ -43,32 +46,39 @@ const ThoughtForm = () => {
 
     try {
       const { data } = await addThought({
-        variables: {
-          thoughtText,
-          postcode,
-          thoughtTitle,
-          maplink,
-          state,
-          thoughtAuthor: Auth.getProfile().data.username,
-        },
+        variables: { ...formState },
+
       });
-      setThoughtText('');
-      setPostcode('');
-      setMaplink('');
-      setState('');
-      setThoughtTitle('');
+      setFormState({
+        thoughtText: "",
+        postcode: "",
+        maplink: "",
+        state: "",
+        thoughtTitle: "",
+        thoughtAuthor: Auth.getProfile().data.username
+      });
     } catch (err) {
       console.error(err);
     }
   };
-  const handleChange = (event) => {
-    const { name, value } = event.target;
 
-    if (name === 'thoughtText' && value.length <= 280) {
-      setThoughtText(value);
-      setCharacterCount(value.length);
-    }
-  };
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setFormState({
+      ...formState,
+      [event.target.name]: value
+    });
+
+
+  }
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+
+  //   if (name === 'thoughtText' && value.length <= 280) {
+  //     setThoughtText(value);
+  //     setCharacterCount(value.length);
+  //   }
+  // };
   return (
     <div>
       <h3>Please post the your problem on street?</h3>
@@ -81,11 +91,11 @@ const ThoughtForm = () => {
             <input
               name='thoughtTitle'
               className='form-control'
-              value={thoughtTitle}
+              value={formState.thoughtTitle}
               id='form-input-control-first-name'
               label='Project Title'
               placeholder='Manholders are leaking'
-              onChange={e => setThoughtTitle(e.target.value)}
+              onChange={handleChange}
             />
             <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>postcode</label>
@@ -94,10 +104,10 @@ const ThoughtForm = () => {
               id='form-input-control-first-name'
               className='form-control'
               label='First name'
-              value={postcode}
+              value={formState.postcode}
               placeholder='First name'
               placeholder='Manholders are leaking'
-              onChange={event => setPostcode(event.target.value)}
+              onChange={handleChange}
             />
             <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>State</label>
@@ -105,10 +115,10 @@ const ThoughtForm = () => {
               name="state"
               id='form-input-control-first-name'
               className='form-control'
-              value={state}
+              value={formState.state}
               label='state'
               placeholder='Telanagana'
-              onChange={event => setState(event.target.value)}
+              onChange={handleChange}
             />
             <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Maplink</label>
@@ -116,17 +126,17 @@ const ThoughtForm = () => {
               name="maplink"
               id='form-textarea-control-opinion'
               className='form-control'
-              value={maplink}
+              value={formState.maplink}
               label='Project description'
               placeholder='Place map url'
-              onChange={event => setMaplink(event.target.value)}
+              onChange={handleChange}
             />
             <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Project Description</label>
             <textarea
               name="thoughtText"
               placeholder="Here's a new thought..."
-              value={thoughtText}
+              value={formState.thoughtText}
               className="form-input w-100"
               style={{ lineHeight: '1.5', resize: 'vertical' }}
               onChange={handleChange}
