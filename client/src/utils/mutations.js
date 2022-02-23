@@ -28,7 +28,11 @@ export const ADD_THOUGHT = gql`
   mutation addThought($thoughtText: String!) {
     addThought(thoughtText: $thoughtText) {
       _id
+      thoughtTitle
+      postcode
       thoughtText
+      maplink
+      state
       thoughtAuthor
       createdAt
       comments {
@@ -43,7 +47,11 @@ export const ADD_COMMENT = gql`
   mutation addComment($thoughtId: ID!, $commentText: String!) {
     addComment(thoughtId: $thoughtId, commentText: $commentText) {
       _id
+      thoughtTitle
+      postcode
       thoughtText
+      maplink
+      state
       thoughtAuthor
       createdAt
       comments {
@@ -53,41 +61,4 @@ export const ADD_COMMENT = gql`
       }
     }
   }
-`;
-
-
-export const SAVE_BOOK = gql`
-    mutation saveBook($bookData: BookInput!) {
-        saveBook(bookData: $bookData) {
-            _id
-            username
-            email
-            bookCount
-            savedBooks {
-                bookId
-                title
-                authors
-                description
-                image
-                link
-            }
-        }
-    }
-`;
-
-export const REMOVE_BOOK = gql`
-    mutation removeBook($bookId: ID!) {
-        removeBook(bookId: $bookId) {
-            _id
-            username
-            savedBooks {
-                bookId
-                title
-                authors
-                description
-                image
-                link
-            }
-        }
-    }
 `;

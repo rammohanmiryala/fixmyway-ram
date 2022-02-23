@@ -19,7 +19,11 @@ export const QUERY_THOUGHTS = gql`
   query getThoughts {
     thoughts {
       _id
+      thoughtTitle
+      postcode
       thoughtText
+      maplink
+      state
       thoughtAuthor
       createdAt
     }
@@ -30,7 +34,11 @@ export const QUERY_SINGLE_THOUGHT = gql`
   query getSingleThought($thoughtId: ID!) {
     thought(thoughtId: $thoughtId) {
       _id
+      thoughtTitle
+      postcode
       thoughtText
+      maplink
+      state
       thoughtAuthor
       createdAt
       comments {
@@ -51,29 +59,14 @@ export const QUERY_ME = gql`
       email
       thoughts {
         _id
-        thoughtText
-        thoughtAuthor
-        createdAt
+      thoughtTitle
+      postcode
+      thoughtText
+      maplink
+      state
+      thoughtAuthor
+      createdAt
       }
     }
   }
-`;
-
-export const GET_ME = gql`
-    {
-        me {
-            _id
-            username
-            email
-            bookCount
-            savedBooks {
-                bookId
-                authors
-                title
-                description
-                link
-                image
-            }
-        }
-    }
 `;

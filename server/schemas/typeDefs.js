@@ -11,7 +11,11 @@ const typeDefs = gql`
 
   type Thought {
     _id: ID
+    thoughtTitle: String
+    postcode: Int
     thoughtText: String
+    maplink: String
+    state: String
     thoughtAuthor: String
     createdAt: String
     comments: [Comment]!
