@@ -8,14 +8,14 @@ const commentSchema = require('./Comment');
 const projectSchema = new Schema({
     projectTitle: {
         type: String,
-        required: 'You need to leave a thought!',
+     
         minlength: 1,
         maxlength: 280,
         trim: true,
     },
     projectDescription: {
         type: String,
-        required: 'You need to leave a thought!',
+    
         minlength: 1,
         maxlength: 280,
         trim: true,

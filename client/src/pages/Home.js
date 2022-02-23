@@ -58,7 +58,6 @@ const Home = () => {
               </Grid.Column> */}
             <Grid.Column width={4} textAlign="center">
               <h4 className="searchbar" style={{ borderBottom: '3px solid Tomato', padding: '10px' }}>Resent Posted Projects </h4>
-
               <Card.Group>
                 <ThoughtLists
                   thoughts={thoughts}

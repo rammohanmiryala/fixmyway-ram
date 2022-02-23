@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { Search, Grid, Header, Segment, Button, Input, TextArea } from 'semantic-ui-react'
+// import { Search, Grid, Header, Segment, Button, Input, TextArea } from 'semantic-ui-react'
 
 import { ADD_THOUGHT } from '../../utils/mutations';
 import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
@@ -38,7 +38,6 @@ const ThoughtForm = () => {
       });
     },
   });
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -53,7 +52,6 @@ const ThoughtForm = () => {
           thoughtAuthor: Auth.getProfile().data.username,
         },
       });
-
       setThoughtText('');
       setPostcode('');
       setMaplink('');
@@ -63,7 +61,6 @@ const ThoughtForm = () => {
       console.error(err);
     }
   };
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -72,7 +69,6 @@ const ThoughtForm = () => {
       setCharacterCount(value.length);
     }
   };
-
   return (
     <div>
       <h3>Please post the your problem on street?</h3>
@@ -80,7 +76,7 @@ const ThoughtForm = () => {
         <>
           <form className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit} >
-            <label 
+            <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Project Title</label>
             <input
               name='thoughtTitle'
@@ -91,7 +87,7 @@ const ThoughtForm = () => {
               placeholder='Manholders are leaking'
               onChange={e => setThoughtTitle(e.target.value)}
             />
-            <label 
+            <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>postcode</label>
             <input
               name="postcode"
@@ -103,7 +99,7 @@ const ThoughtForm = () => {
               placeholder='Manholders are leaking'
               onChange={event => setPostcode(event.target.value)}
             />
-            <label 
+            <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>State</label>
             <input
               name="state"
@@ -114,7 +110,7 @@ const ThoughtForm = () => {
               placeholder='Telanagana'
               onChange={event => setState(event.target.value)}
             />
-            <label 
+            <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Maplink</label>
             <input
               name="maplink"
@@ -124,11 +120,9 @@ const ThoughtForm = () => {
               label='Project description'
               placeholder='Place map url'
               onChange={event => setMaplink(event.target.value)}
-              
             />
-             <label 
+            <label
               style={{ lineHeight: '1.5', resize: 'vertical', marginBottom: '10px' }}>Project Description</label>
-         
             <textarea
               name="thoughtText"
               placeholder="Here's a new thought..."
@@ -137,8 +131,6 @@ const ThoughtForm = () => {
               style={{ lineHeight: '1.5', resize: 'vertical' }}
               onChange={handleChange}
             ></textarea>
-
-
             <div className="">
               <button className="" type="submit">
                 Add Thought
@@ -150,7 +142,6 @@ const ThoughtForm = () => {
               </div>
             )}
           </form>
-
         </>
       ) : (
         <p>

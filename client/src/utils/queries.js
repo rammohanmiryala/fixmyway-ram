@@ -10,13 +10,6 @@ export const QUERY_USER = gql`
         _id
         thoughtText
         createdAt
-        thoughtTitle
-        postcode
-        thoughtText
-        maplink
-        state
-        thoughtAuthor
-        createdAt
       }
     }
   }
@@ -30,8 +23,9 @@ export const QUERY_THOUGHTS = gql`
       postcode
       thoughtText
       maplink
-      state
       thoughtAuthor
+      createdAt
+      state
       createdAt
     }
   }
@@ -45,8 +39,9 @@ export const QUERY_SINGLE_THOUGHT = gql`
       postcode
       thoughtText
       maplink
-      state
       thoughtAuthor
+      createdAt
+      state
       createdAt
       comments {
         _id
@@ -66,12 +61,13 @@ export const QUERY_ME = gql`
       email
       thoughts {
         _id
-      thoughtTitle
+        thoughtTitle
       postcode
       thoughtText
       maplink
-      state
       thoughtAuthor
+      createdAt
+      state
       createdAt
       }
     }

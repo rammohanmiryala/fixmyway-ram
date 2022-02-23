@@ -21,6 +21,7 @@ const ThoughtList = ({
               {showUsername ? (
                 <Link
                   className="text-light"
+                  style={{ textDecoration: 'none'}}
                   to={`/profiles/${thought.thoughtAuthor}`}
                 >
                   {thought.thoughtAuthor} <br />
