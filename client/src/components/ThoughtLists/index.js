@@ -23,7 +23,7 @@ const ThoughtLists = ({ thoughts,
             {thoughts &&
               thoughts.map((thought) => (
                 <div className="borderbox">
-                  <Link to={`/thoughts/${thought._id}`}>
+                  <Link to={`/thoughts/${thought._id}`} style={{ textDecoration: 'none' }} >
                   <div key={thought._id} className="borderbox2">
                     <a className="header">{thought.thoughtAuthor} </a>
                     <div className="meta">
